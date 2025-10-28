@@ -13,7 +13,7 @@ const Books = ({booksData}) => {
 
     console.log(allBooks) */
 
-    // console.log("Books Data: ",booksData)
+    console.log("Books Data: ",booksData)
 
     return (
         
