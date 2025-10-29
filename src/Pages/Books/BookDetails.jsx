@@ -1,6 +1,7 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router";
-import { addToWishList } from "../../Utilities/localStorage";
+import { addToReadList, addToWishList } from "../../Utilities/localStorage";
+import { ToastContainer, toast } from 'react-toastify';
 
 const BookDetails = () => {
   const booksData = useLoaderData();
@@ -15,9 +16,18 @@ const BookDetails = () => {
   // console.log(book_id) //number
   // console.log(booksData)
 
-  const handleWishList = (id) =>{
-    addToWishList(id);
+  const handleWishList = (id,type) =>{
+    addToWishList(id,type);
+
+    toast("Added to wish list");
   }
+
+  const handleReadBook = (id,type) =>{
+    addToReadList(id,type);
+
+    toast("Added to Read books list");
+  }
+
   return (
     <div className="py-24 w-[90%] mx-auto">
       <div className="bookDetailsCard flex flex-col md:flex-row gap-4 mt-6">
@@ -52,12 +62,13 @@ const BookDetails = () => {
           </div>
 
           <div className="flex gap-3">
-            <button className="py-2 px-4 border border-gray-300 rounded-lg cursor-pointer">Mark as Read</button>
-            <button className="py-2 px-3 border bg-blue-500 text-white rounded-lg cursor-pointer" onClick={()=> handleWishList(book_id)}>Add to Wishlist</button>
+            <button className="py-2 px-4 border border-gray-300 rounded-lg cursor-pointer" onClick={()=>handleReadBook(book_id,"readList")}>Mark as Read</button>
+            <button className="py-2 px-3 border bg-blue-500 text-white rounded-lg cursor-pointer" onClick={()=> handleWishList(book_id,"wishList")}>Add to Wishlist</button>
           </div>
 
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

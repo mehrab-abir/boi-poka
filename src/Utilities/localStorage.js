@@ -1,5 +1,5 @@
-const getStoredIds = () =>{
-    const storedIds = localStorage.getItem("wishList");
+const getStoredIds = (list) =>{
+    const storedIds = localStorage.getItem(list);
 
     if(storedIds){
         const stroedBooksId = JSON.parse(storedIds)
@@ -10,8 +10,8 @@ const getStoredIds = () =>{
     }
 }
 
-const addToWishList = (id) =>{
-    const storedIds = getStoredIds();
+const addToWishList = (id,list) =>{
+    const storedIds = getStoredIds(list);
 
     if(storedIds.includes(id)){
         alert("This book already exists in the wishlist")
@@ -23,4 +23,17 @@ const addToWishList = (id) =>{
     }
 }
 
-export {addToWishList}
+const addToReadList = (id,list) =>{
+    const storedIds = getStoredIds(list);
+
+    if(storedIds.includes(id)){
+        alert("This book already exists in the readlist")
+    }
+    else{
+        storedIds.push(id);
+        const updatedReadList = JSON.stringify(storedIds);
+        localStorage.setItem("readList",updatedReadList);
+    }
+}
+
+export {addToWishList,getStoredIds,addToReadList}
