@@ -38,32 +38,37 @@ const WishList = () => {
         Wish List ({wishList.length})
       </h1>
 
-        {/* dropdown box to select sort by: */}
+      {/* dropdown box to select sort by: */}
       <div className="flex items-center justify-center">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn m-1 bg-green-500 text-white">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn m-1 bg-green-500 text-white"
+          >
             Sort By : {sort ? sort : " "}
           </div>
-          {
-            open ? <ul
+          <ul
             tabIndex={0}
             className="dropdown-content menu bg-base-100 rounded-box z-10 w-52 p-2 shadow"
           >
-            <li onClick={() => {
+            <li
+              onClick={() => {
                 handleSort("Pages");
                 document.activeElement.blur();
-            }}>
+              }}
+            >
               <a>Pages</a>
             </li>
-            <li onClick={() =>{
+            <li
+              onClick={() => {
                 handleSort("Rating");
                 document.activeElement.blur();
-            } }>
+              }}
+            >
               <a>Rating</a>
             </li>
-          </ul> : ""
-          }
-          
+          </ul>
         </div>
       </div>
 

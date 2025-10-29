@@ -48,31 +48,27 @@ const ReadBooks = () => {
           >
             Sort By : {sort ? sort : " "}
           </div>
-          {open ? (
-            <ul
-              tabIndex={0}
-              className="dropdown-content menu bg-base-100 rounded-box z-10 w-52 p-2 shadow"
+          <ul
+            tabIndex={0}
+            className="dropdown-content menu bg-base-100 rounded-box z-10 w-52 p-2 shadow"
+          >
+            <li
+              onClick={() => {
+                handleSort("Pages");
+                document.activeElement.blur();
+              }}
             >
-              <li
-                onClick={() => {
-                  handleSort("Pages");
-                  document.activeElement.blur();
-                }}
-              >
-                <a>Pages</a>
-              </li>
-              <li
-                onClick={() => {
-                  handleSort("Rating");
-                  document.activeElement.blur();
-                }}
-              >
-                <a>Rating</a>
-              </li>
-            </ul>
-          ) : (
-            ""
-          )}
+              <a>Pages</a>
+            </li>
+            <li
+              onClick={() => {
+                handleSort("Rating");
+                document.activeElement.blur();
+              }}
+            >
+              <a>Rating</a>
+            </li>
+          </ul>
         </div>
       </div>
 
